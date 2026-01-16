@@ -41,12 +41,12 @@ public class CANFuelSubsystem extends SubsystemBase {
     feederRoller.getConfigurator().apply(feederConfig);
 
     var launcherRoller = new TalonFXConfiguration();
-    feederConfig.Slot0.kS = 0;
-    feederConfig.Slot0.kV = 0;
-    feederConfig.Slot0.kA = 0;
-    feederConfig.Slot0.kP = 3;
-    feederConfig.Slot0.kI = 0;
-    feederConfig.Slot0.kD = 0;
+    launcherRoller.Slot0.kS = 0;
+    launcherRoller.Slot0.kV = 0;
+    launcherRoller.Slot0.kA = 0;
+    launcherRoller.Slot0.kP = 3;
+    launcherRoller.Slot0.kI = 0;
+    launcherRoller.Slot0.kD = 0;
 
     intakeLauncherRoller.getConfigurator().apply(launcherRoller);
 
@@ -66,7 +66,7 @@ public class CANFuelSubsystem extends SubsystemBase {
     return this.runOnce(
         () -> {
           setFeederRollerSpeed(INTAKING_FEEDER_SPEED);
-          setIntakeLauncherRollerSpeed(INTAKING_INTAKE_VOLTAGE);
+          setIntakeLauncherRollerSpeed(INTAKING_INTAKE_SPEED);
         });
   }
 
@@ -75,7 +75,7 @@ public class CANFuelSubsystem extends SubsystemBase {
     return this.runOnce(
         () -> {
             setFeederRollerSpeed(-INTAKING_FEEDER_SPEED);
-            setIntakeLauncherRollerSpeed(-INTAKING_INTAKE_VOLTAGE);
+            setIntakeLauncherRollerSpeed(-INTAKING_INTAKE_SPEED);
         });
   }
 
@@ -84,7 +84,7 @@ public class CANFuelSubsystem extends SubsystemBase {
     return this.runOnce(
         () -> {
             setFeederRollerSpeed(LAUNCHING_FEEDER_SPEED);
-            setIntakeLauncherRollerSpeed(LAUNCHING_FEEDER_SPEED);
+            setIntakeLauncherRollerSpeed(LAUNCHING_LAUNCHER_SPEED);
         });
   }
 
